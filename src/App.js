@@ -1,26 +1,101 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Route} from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import NavBar from './components/NavBar'
+import Index from "./components/Index"
+import Show from './components/Show'
+import Form from "./components/Form"
+
+class App extends React.Component {
+  state = {
+    recipe: []
 }
+
+handleAddRequest = (recipe) => {
+  const copyRecipe = [...this.state.recipe]
+  copyRecipe.unshift(recipe)
+  this.setState({
+    recipe: copyRecipe,
+    title: '',
+    difficulty: '',
+    image: '',
+    ingredients: '',
+    instructions: '',
+  })
+}
+
+componentDidMount() {
+    this.getRecipe()
+}
+
+getRecipe = () => {
+    fetch(`http://localhost:3000/recipes`)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+              recipe: data
+              // .filter(recipe => !!recipe.death)
+              .map(recipe => ({
+                  title: recipe.title,
+                  difficulty: recipe.difficulty,
+                  likes: recipe.likes,
+                  image: recipe.image,
+                  ingredients: recipe.ingredients,
+                  instructions: recipe.instructions,
+                  id: recipe.id
+              }))
+          })
+      })
+        .catch(err => console.log(err))
+}
+
+handleDelete = (Recipe) => {
+  fetch(`/recipes/${Recipe.id}`, {
+     method: 'DELETE',
+     headers: {
+       'Accept': 'application/json, text/plain, */*',
+       'Content-Type': 'application/json'
+     }
+   })
+ .then(json => {
+   const recipe = this.state.recipe.filter(recipes => recipes.id !== Recipe.id)
+   this.setState({recipe})
+ })
+ .catch(error => console.log(error))
+}
+
+addSupport = (recipe) => {
+  fetch(`/recipes/${recipe.id}`, {
+    method: 'PUT',
+    body: JSON.stringify({likes: recipe.likes + 1}),
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type' : 'application/json'
+    }
+  }).then(res => res.json())
+  .then(resJson => {
+        const copyRecipes = [...this.state.recipe]
+        const findIndex = this.state.recipe.findIndex(recipe => recipe.id === resJson.id)
+        copyRecipes[findIndex].likes = resJson.likes;
+        this.setState({recipe: copyRecipes})
+  })
+}
+
+
+  render(){
+    return (
+      <BrowserRouter>
+      <div className="App">
+          <NavBar/>
+          <Route path="/recipe" exact render={props => <Form {...props} recipe={this.state.recipe} handleAddRequest={this.handleAddRequest}/>}/>
+          <Route path="/" exact render={(props) => <Index {...props} recipe={this.state.recipe} handleDelete={this.handleDelete} addSupport={this.addSupport}/>}/>
+          <Route path="/recipes/:id" exact render={(props) => <Show {...props} recipe={this.state.recipe}/>}/>
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+
 
 export default App;
