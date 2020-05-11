@@ -9,19 +9,29 @@ class Index extends React.Component {
         // console.log(props)
         return(
             <div className="index">
-                <img src="../dog4.png" height="300px" alt="https://img.clipartlook.com/dog-dry-food-bowl-dog-food-clipart-416_416.jpg"/>
                 {this.props.recipe.map(recipe => (
                     <div className="recipe" key={recipe.id}>
-                        <Link to={{pathname: `/recipes/${recipe.id}`, state: {recipe: recipe.id}}}><h3>{recipe.title}</h3></Link>
-                        <h4>{recipe.difficulty}</h4>
-                        <div className="likes">
-                            <img onClick={() => this.props.addSupport(recipe)} src="./heart.png" alt="Heart"/><span>{recipe.likes === 0 ? "" : recipe.likes}</span>
+                        
+                        <div className="left">
+                        <Link to={{pathname: `/recipes/${recipe.id}`, state: {recipe: recipe.id}}}><img src={recipe.image} height="225px" width="275px" alt="recipe"/></Link>
+                        </div>   
+
+                        <div className="right">
+                            <div className="top">
+                                <Link to={{pathname: `/recipes/${recipe.id}`, state: {recipe: recipe.id}}}><h3>{recipe.title}</h3></Link> 
+                                <div className="likes"> 
+                                <img onClick={() => this.props.addSupport(recipe)} src="./heart.png" width="20px" height="20px" alt="Heart"/><span> {recipe.likes === 0 ? "" : recipe.likes}</span>
+                        </div>                               
+                            </div>
+                            {recipe.ingredients.map(ingredients => (
+                                    <li key={ingredients}>
+                                        {ingredients}
+                                    </li>
+                            ))}
                         </div>
-                        {/* <img src={recipe.image} width="400px" height="400"  alt="https://img.clipartlook.com/dog-dry-food-bowl-dog-food-clipart-416_416.jpg"></img> */}
                         <p className="x" onClick={() =>this.props.handleDelete(recipe)}>X</p>
                     </div>
                 ))}
-                <img src="../looking.png" alt="https://img.clipartlook.com/dog-dry-food-bowl-dog-food-clipart-416_416.jpg"/>
             </div>
         )
     }

@@ -35,10 +35,10 @@ class Show extends React.Component {
         // console.log(this.props.location)
         return(
             <div className="show">
-                <img src="../dog1.png" height="350px" alt="https://img.clipartlook.com/dog-dry-food-bowl-dog-food-clipart-416_416.jpg"/>
+                <img className="bully" src="../paw.gif" height="100%" alt="https://img.clipartlook.com/dog-dry-food-bowl-dog-food-clipart-416_416.jpg"/>
                 {!this.state.isLoading ?
                 <div className="info">
-                    <div className="left">
+                    <div className="data">
                         <h3>{this.state.activeRecipe.title} <img src="../heart.png" alt="Heart"/><span>{this.state.activeRecipe.likes === 0 ? "" : this.state.activeRecipe.likes}</span>
 </h3>
                         <h4>{this.state.activeRecipe.difficulty}</h4>
@@ -51,7 +51,7 @@ class Show extends React.Component {
                                 </ul>
                             </div>
                         ))}
-                        <img src={this.state.activeRecipe.image} width="500px" height="500px" alt="https://img.clipartlook.com/dog-dry-food-bowl-dog-food-clipart-416_416.jpg"/>
+                        <img className="image" src={this.state.activeRecipe.image} width="500px" height="500px" alt="https://img.clipartlook.com/dog-dry-food-bowl-dog-food-clipart-416_416.jpg"/>
                         <p>{this.state.activeRecipe.instructions}</p>
                         </div>
                 </div> : <h2>Loading Recipe...</h2>}

@@ -1,0 +1,202 @@
+body {
+    font-family: "roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(232, 234, 235);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-attachment: fixed;
+    background-image: url(./looking.png);
+}
+
+
+
+/* NAVBAR STYLES */
+a {
+    text-decoration: none;
+    color: rgb(26, 22, 22);
+}
+
+a:hover {
+    color: cornflowerblue;
+}
+
+.navbar {
+    font-family: "changa", sans-serif;
+    font-size: 35px;
+    display: flex;
+    justify-content: space-around;
+    z-index: 10;
+    margin-bottom: 45px;
+}
+
+.navbar span {
+    font-family: "dancing script", sans-serif;
+    font-size: 25px;
+}
+
+.navbar h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar h1 a {
+    line-height: 40px;
+}
+
+
+
+/* INDEX STYLES */
+
+/* .mini {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+} */
+
+.recipe {
+    width: 62vw;
+    height: 225px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    position: relative;
+
+    flex-wrap: nowrap;
+    display: flex;
+    
+}
+
+.right {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.right li {
+    list-style: none;
+    font-family: "dancing script";
+}
+
+.top {
+    margin: 0;
+    display: flex;
+    flex-direction: row;  
+}
+
+.top h3, h4, img, span {
+    margin: 0;
+    font-weight: 500;
+}
+
+.x {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-family: "changa", sans-serif;
+    font-size: 25px;
+    margin: 0;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+.x:hover {
+    cursor: pointer;
+}
+
+
+/* SHOW STYLES */
+
+.bully {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.show {
+    width: 45vw;
+    margin: 0 auto;
+}
+
+.image {
+    display: block;
+    margin: 0 auto;
+}
+
+.show li, p{
+    font-family: "dancing script";
+    font-size: 21px;
+}
+
+.show h3, h4 {
+    font-family: "roboto";
+    font-weight: 500;
+}
+
+/* FORM STYLES */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#title {
+    width: 350px;
+    height: 21px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#difficulty {
+    width: 90px;
+    height: 23px;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+#image {
+    width: 518px;
+    height: 21px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#ingredients {
+    width: 475px;
+    height: 21px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#instructions {
+    height: 180px;
+    width: 600px;
+    font-size: 20px;
+    font-family: "Neuton", sans-serif;
+    border-radius: 5px;
+}
+
+#button {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    background-color: cornflowerblue;
+    padding: 7px 16px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid cornflowerblue;
+}
+
+#button:hover {
+    background: rgb(167, 164, 164);
+    cursor: pointer;
+  }
+
+
+

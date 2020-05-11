@@ -5,7 +5,7 @@ class Form extends React.Component {
         title: "",
         difficulty: "",
         image: "",
-        ingredients: [],
+        ingredients: "",
         instructions: ""
     }
 
@@ -20,7 +20,7 @@ class Form extends React.Component {
               difficulty: this.state.difficulty,
               image: this.state.image,
               instructions: this.state.instructions,
-              ingredients: this.state.ingredients,
+              ingredients: this.state.ingredients
           }),
           headers: {
             'Accept': 'application/json, text/plain, */*',
@@ -37,6 +37,7 @@ class Form extends React.Component {
               ingredients: "",
               instructions: ""
             })
+            // redirecting to home page
             this.props.history.push('/')
         }).catch (error => console.error({'Error': error}))
       }
@@ -50,6 +51,15 @@ class Form extends React.Component {
             <div className="form">
                 <img src="../dog3.png" height="300px" alt="https://img.clipartlook.com/dog-dry-food-bowl-dog-food-clipart-416_416.jpg"/>
                 <form onSubmit={this.handleSubmit}>
+                <label htmlFor="difficulty">Difficulty Level:</label>
+                    <select onChange={this.handleChange} name="difficulty" value={this.state.difficulty} id="difficulty">
+                        <option value="">Difficulty Level</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                    <br/>
+                    
                     <label htmlFor="title">Title:</label>
                     <input
                         onChange={this.handleChange}
@@ -59,25 +69,18 @@ class Form extends React.Component {
                         value={this.state.title}
                         id="title"
                     />
-                    <label htmlFor="difficulty">Difficulty Level:</label>
-                    <select onChange={this.handleChange} name="difficulty" value={this.state.difficulty} id="difficulty">
-                        <option value="">Difficulty Level</option>
-                        <option value="Easy">Easy</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Hard">Hard</option>
-                    </select>
-                    <br></br>
-
+                    <br/>
                     <label htmlFor="image">Image URL:</label>
                     <input
                         onChange={this.handleChange}
                         name="image"
-                        placeholder="Image URL"
+                        placeholder="Enter URL"
                         type="text"
                         value={this.state.image}
                         id="image"
                         />
-                    <label htmlFor="ingredients">ingredients URL:</label>
+                        <br/>
+                    <label htmlFor="ingredients">Enter Ingredients:</label>
                     <input
                         onChange={this.handleChange}
                         name="ingredients"
@@ -86,7 +89,7 @@ class Form extends React.Component {
                         value={this.state.ingredients}
                         id="ingredients"
                         />
-                    <label htmlFor="instruction">Instructions</label>
+                        <br/>
                     <textarea 
                         rows="3"
                         column="15"
@@ -95,8 +98,9 @@ class Form extends React.Component {
                         name="instructions"
                         id="instructions"
                         placeholder="Enter Instructions"
-                        value={this.state.instructions}></textarea>
-
+                        value={this.state.instructions}>
+                    </textarea>
+                    <br/>
                     <input id="button" type="submit" value="Submit Request"/>
                 </form>
             </div>
