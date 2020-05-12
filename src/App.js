@@ -7,6 +7,14 @@ import Index from "./components/Index"
 import Show from './components/Show'
 import Form from "./components/Form"
 
+let baseURL = process.env.REACT_APP_BASEURL
+
+if (process.env.NODE_ENV === "development") {
+    baseURL = "http://localhost:3000"
+} else {
+    baseURL = "https://recipesfortotoapi.herokuapp.com"
+}
+
 class App extends React.Component {
   state = {
     recipe: []
@@ -32,7 +40,7 @@ componentDidMount() {
 }
 
 getRecipe = () => {
-    fetch(`https://recipesfortotoapi.herokuapp.com/recipes`)
+    fetch(`${baseURL}/recipes`)
         .then(res => res.json())
         .then(data => {
           this.setState({
@@ -54,7 +62,7 @@ getRecipe = () => {
 
 //DELETE
 handleDelete = (Recipe) => {
-  fetch(`https://recipesfortotoapi.herokuapp.com/recipes/${Recipe.id}`, {
+  fetch(`${baseURL}/recipes/${Recipe.id}`, {
      method: 'DELETE',
      headers: {
        'Accept': 'application/json, text/plain, */*',
@@ -70,7 +78,7 @@ handleDelete = (Recipe) => {
 
 //UPDATE likes
 addSupport = (recipe) => {
-  fetch(`https://recipesfortotoapi.herokuapp.com/recipes/${recipe.id}`, {
+  fetch(`${baseURL}/recipes/${recipe.id}`, {
     method: 'PUT',
     body: JSON.stringify({likes: recipe.likes + 1}),
     headers: {
