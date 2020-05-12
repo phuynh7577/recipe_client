@@ -5,22 +5,22 @@ class Form extends React.Component {
         title: "",
         difficulty: "",
         image: "",
-        ingredients: "",
+        ingredients: [],
         instructions: ""
     }
 
-
+//POST request
     handleSubmit = (event) => {
-        event.preventDefault()
+        event.preventDefault() 
         //send data to server
         fetch('http://localhost:3000/recipes', {
           method: 'POST',
           body: JSON.stringify({
-              title: this.state.title,
-              difficulty: this.state.difficulty,
-              image: this.state.image,
+              title: this.state.title=== "" ? "Yummy Dog Food" : this.state.title,
+              difficulty: this.state.difficulty === "" ? "Easy" : this.state.difficulty,
+              image: this.state.image === "" ? "https://img.clipartlook.com/dog-dry-food-bowl-dog-food-clipart-416_416.jpg" : this.state.image,
               instructions: this.state.instructions,
-              ingredients: this.state.ingredients
+              ingredients: "," + this.state.ingredients + "," 
           }),
           headers: {
             'Accept': 'application/json, text/plain, */*',
@@ -30,20 +30,27 @@ class Form extends React.Component {
         }).then (res => res.json())
           .then (resJson => {
             this.props.handleAddRequest(resJson)
-            this.setState({
-              title: "",
-              difficulty: "",
-              image: "",
-              ingredients: "",
-              instructions: ""
-            })
+
+                //clearing state but handle add request did it for us.
+            // this.setState({
+            //   title: "",
+            //   difficulty: "",
+            //   image: "",
+            //   ingredients: "",
+            //   instructions: ""
+            // })
+
+
             // redirecting to home page
             this.props.history.push('/')
         }).catch (error => console.error({'Error': error}))
       }
 
+      //setting state to what is typed in
       handleChange = (event) => {
         this.setState({ [event.target.id]: event.target.value})
+        // console.log(event.target.id)
+        // console.log(event.target.value)
     }
 
     render(){
@@ -51,6 +58,7 @@ class Form extends React.Component {
             <div className="form">
                 <img src="../dog3.png" height="300px" alt="https://img.clipartlook.com/dog-dry-food-bowl-dog-food-clipart-416_416.jpg"/>
                 <form onSubmit={this.handleSubmit}>
+                    
                 <label htmlFor="difficulty">Difficulty Level:</label>
                     <select onChange={this.handleChange} name="difficulty" value={this.state.difficulty} id="difficulty">
                         <option value="">Difficulty Level</option>

@@ -12,6 +12,7 @@ class App extends React.Component {
     recipe: []
 }
 
+//clearing state after POST
 handleAddRequest = (recipe) => {
   const copyRecipe = [...this.state.recipe]
   copyRecipe.unshift(recipe)
@@ -24,6 +25,7 @@ handleAddRequest = (recipe) => {
     instructions: '',
   })
 }
+
 
 componentDidMount() {
     this.getRecipe()
@@ -50,6 +52,7 @@ getRecipe = () => {
         .catch(err => console.log(err))
 }
 
+//DELETE
 handleDelete = (Recipe) => {
   fetch(`/recipes/${Recipe.id}`, {
      method: 'DELETE',
@@ -65,6 +68,7 @@ handleDelete = (Recipe) => {
  .catch(error => console.log(error))
 }
 
+//UPDATE likes
 addSupport = (recipe) => {
   fetch(`/recipes/${recipe.id}`, {
     method: 'PUT',
@@ -90,7 +94,7 @@ addSupport = (recipe) => {
           <NavBar/>
           <Route path="/recipe" exact render={props => <Form {...props} recipe={this.state.recipe} handleAddRequest={this.handleAddRequest}/>}/>
           <Route path="/" exact render={(props) => <Index {...props} recipe={this.state.recipe} handleDelete={this.handleDelete} addSupport={this.addSupport}/>}/>
-          <Route path="/recipes/:id" exact render={(props) => <Show {...props} recipe={this.state.recipe}/>}/>
+          <Route path="/recipes/:id" exact render={(props) => <Show {...props} recipe={this.state.recipe} addSupport={this.addSupport}/>}/>
         </div>
       </BrowserRouter>
     );
