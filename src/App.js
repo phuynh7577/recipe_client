@@ -40,7 +40,7 @@ componentDidMount() {
 }
 
 getRecipe = () => {
-    fetch(`${baseURL}/recipes`)
+    fetch(`https://recipesfortotoapi.herokuapp.com/recipes`)
         .then(res => res.json())
         .then(data => {
           this.setState({
@@ -62,7 +62,7 @@ getRecipe = () => {
 
 //DELETE
 handleDelete = (Recipe) => {
-  fetch(`${baseURL}/recipes/${Recipe.id}`, {
+  fetch(`https://recipesfortotoapi.herokuapp.com/recipes/${Recipe.id}`, {
      method: 'DELETE',
      headers: {
        'Accept': 'application/json, text/plain, */*',
@@ -78,7 +78,7 @@ handleDelete = (Recipe) => {
 
 //UPDATE likes
 addSupport = (recipe) => {
-  fetch(`${baseURL}/recipes/${recipe.id}`, {
+  fetch(`https://recipesfortotoapi.herokuapp.com/recipes/${recipe.id}`, {
     method: 'PUT',
     body: JSON.stringify({likes: recipe.likes + 1}),
     headers: {

@@ -1,13 +1,5 @@
 import React from 'react';
 
-let baseURL = process.env.REACT_APP_BASEURL
-
-if (process.env.NODE_ENV === "development") {
-    baseURL = "http://localhost:3000"
-} else {
-    baseURL = "https://recipesfortotoapi.herokuapp.com"
-}
-
 
 class Show extends React.Component {
     state = {
@@ -19,7 +11,7 @@ class Show extends React.Component {
 //lifecycle method
     componentDidMount = () => {
         const hash = this.props.location.pathname
-        fetch(`${baseURL}/${hash}`)
+        fetch(`https://recipesfortotoapi.herokuapp.com/${hash}`)
             .then(res => res.json())
             .then(data => {
                 this.setState({
