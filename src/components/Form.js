@@ -13,7 +13,7 @@ class Form extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault() 
         //send data to server
-        fetch('http://localhost:3000/recipes', {
+        fetch('https://recipesfortotoapi.herokuapp.com/recipes', {
           method: 'POST',
           body: JSON.stringify({
               title: this.state.title=== "" ? "Yummy Dog Food" : this.state.title,

@@ -3,7 +3,7 @@ import React from 'react';
 
 class Show extends React.Component {
     state = {
-        ActiveRecipe: "",
+        activeRecipe: "",
         isLoading: true,
         error: null
     }
@@ -11,7 +11,7 @@ class Show extends React.Component {
 //lifecycle method
     componentDidMount = () => {
         const hash = this.props.location.pathname
-        fetch(`http://localhost:3000/${hash}`)
+        fetch(`https://recipesfortotoapi.herokuapp.com/${hash}`)
             .then(res => res.json())
             .then(data => {
                 this.setState({
@@ -20,27 +20,18 @@ class Show extends React.Component {
                 })
             })
             .catch(error => this.setState({error, isLoading: false}))
-            
-            // this.getRecipe();
     }
-
-// getRecipe = (recipe) => {
-//     this.setState(recipe)
-// }
-
-
 
 
     render() {
-        // console.log(this.props.location)
+        console.log(this.props.location.pathname)
         return(
             <div className="show">
                 <img className="bully" src="../paw.gif" height="100%" alt="https://img.clipartlook.com/dog-dry-food-bowl-dog-food-clipart-416_416.jpg"/>
                 {!this.state.isLoading ?
                 <div className="info">
                     <div className="data">
-                        <h3>{this.state.activeRecipe.title} <img src="../heart.png" alt="Heart"/><span>{this.state.activeRecipe.likes === 0 ? "" : this.state.activeRecipe.likes}</span>
-</h3>
+                        <h3>{this.state.activeRecipe.title} <img src="../heart.png" alt="Heart"/><span>{this.state.activeRecipe.likes === 0 ? "" : this.state.activeRecipe.likes}</span></h3>
                         <h4>{this.state.activeRecipe.difficulty}</h4>
                         {this.state.activeRecipe.ingredients.map(ingredients => (
                             <div className="li" key={ingredients}>
