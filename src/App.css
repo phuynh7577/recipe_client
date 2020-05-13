@@ -49,13 +49,6 @@ a:hover {
 
 /* INDEX STYLES */
 
-/* .mini {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    z-index: 0;
-} */
-
 .recipe {
     width: 62vw;
     height: 225px;
@@ -201,3 +194,143 @@ a:hover {
 
 
 
+
+  @media only screen and (max-width: 800px) {
+
+    .bully {
+        display: none;
+    }
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  @media only screen and (max-width: 415px) {
+    body {
+        background-repeat: none;
+        background-position: none;
+        background-attachment: none;
+        background-image: none;
+    }
+
+    .navbar {
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 25px;
+    }
+
+    .navbar span {
+        font-family: "dancing script", sans-serif;
+        font-size: 20px;
+        display: block;
+        text-align: center;
+    }
+
+    .index {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .recipe {
+        height: auto;
+        margin: 0 auto;
+        position: relative;
+        margin-top: 25px;
+    }
+
+    .recipe .recipeimage {
+        display: none;
+    }
+
+    .recipe li {
+        list-style: inherit;
+    }
+
+    .x {
+        display: none;
+    }
+
+    .bully {
+        display: none;
+    }
+
+    .show {
+        width: 85%;
+    }
+
+    .bully {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    
+    .image {
+        width: 95%;
+        height: 200px;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .show li, p{
+        font-family: "dancing script";
+        font-size: 19px;
+    }
+    
+    .formdog {
+        height: 200px;
+    }
+
+    
+
+
+
+
+    .form {
+        width: 350px;
+        height: 415px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+    }
+
+
+    #title {
+        width: 250px;
+    }
+    
+    #difficulty {
+        width: 250px;
+    }
+    
+    #image {
+        width: 250px;
+    }
+    
+    #ingredients {
+        width: 250px;
+    }
+    
+    #instructions {
+        height: 200px;
+        width: 250px;
+    }
+
+    label {
+        display: none;
+    }
+    
+  }

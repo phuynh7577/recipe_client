@@ -56,7 +56,7 @@ class Form extends React.Component {
     render(){
         return(
             <div className="form">
-                <img src="../dog3.png" height="300px" alt="https://img.clipartlook.com/dog-dry-food-bowl-dog-food-clipart-416_416.jpg"/>
+                <img  className="formdog" src="../dog3.png" height="300px" alt="https://img.clipartlook.com/dog-dry-food-bowl-dog-food-clipart-416_416.jpg"/>
                 <form onSubmit={this.handleSubmit}>
                     
                 <label htmlFor="difficulty">Difficulty Level:</label>
@@ -92,7 +92,7 @@ class Form extends React.Component {
                     <input
                         onChange={this.handleChange}
                         name="ingredients"
-                        placeholder="Enter Ingredients Seperated by a Comma"
+                        placeholder="Seperate Ingredients with a comma"
                         type="text"
                         value={this.state.ingredients}
                         id="ingredients"

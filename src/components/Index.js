@@ -13,7 +13,7 @@ class Index extends React.Component {
                     <div className="recipe" key={recipe.id}>
                         
                         <div className="left">
-                        <Link to={{pathname: `/recipes/${recipe.id}`, state: {recipe: recipe.id}}}><img src={recipe.image} height="225px" width="275px" alt="recipe"/></Link>
+                        <Link to={{pathname: `/recipes/${recipe.id}`, state: {recipe: recipe.id}}}><img className="recipeimage" src={recipe.image} height="225px" width="275px" alt="recipe"/></Link>
                         </div>   
 
                         <div className="right">
