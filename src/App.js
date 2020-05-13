@@ -7,14 +7,6 @@ import Index from "./components/Index"
 import Show from './components/Show'
 import Form from "./components/Form"
 
-let baseURL = process.env.REACT_APP_BASEURL
-
-if (process.env.NODE_ENV === "development") {
-    baseURL = "http://localhost:3000"
-} else {
-    baseURL = "https://recipesfortotoapi.herokuapp.com"
-}
-
 class App extends React.Component {
   state = {
     recipe: []
