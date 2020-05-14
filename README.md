@@ -1,5 +1,5 @@
 ## RECIPES FOR TOTO client
-Users will be allowed to create, read, update, and delete doc recipes. 
+Users will be allowed to create, read, update with like button. 
 
 ## Link to front-end and back-end
 * https://recipesfortoto.herokuapp.com/
