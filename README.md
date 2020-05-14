@@ -7,7 +7,7 @@ Users will be allowed to create, read, update, and delete doc recipes.
 * /1 
 
 ## Technology Used
-* React.js, React-Router, Ruby on rails, Implemented CORS, Hosted on Heroku.
+* React.js, Ruby on rails, Hosted on Heroku.
 
 ## Approach taken
 * Created API with Ruby on Rails.
