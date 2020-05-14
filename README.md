@@ -7,11 +7,12 @@ Users will be allowed to create, read, update, and delete doc recipes.
 * /1 
 
 ## Technology Used
-* React.js, Ruby on rails, Hosted on Heroku.
+* React.js, Ruby on rails, Postgres, Hosted on Heroku.
 
 ## Approach taken
 * Created API with Ruby on Rails.
-* Setup seeds 
+* Data type: Postgres
+* Setup seeds in rails o supply data to React while developing.
 * create-react-app 
 
 ## Notes to self
