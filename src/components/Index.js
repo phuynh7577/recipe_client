@@ -29,7 +29,7 @@ class Index extends React.Component {
                                     </li>
                             ))}
                         </div>
-                        <p className="x" onClick={() =>this.props.handleDelete(recipe)}>X</p>
+                        {/* <p className="x" onClick={() =>this.props.handleDelete(recipe)}>X</p> */}
                     </div>
                 ))}
             </div>

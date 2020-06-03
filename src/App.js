@@ -12,7 +12,7 @@ class App extends React.Component {
     recipe: []
 }
 
-//clearing state after POST
+//clearing state after POST & updating
 handleAddRequest = (recipe) => {
   const copyRecipe = [...this.state.recipe]
   copyRecipe.unshift(recipe)
@@ -53,20 +53,20 @@ getRecipe = () => {
 }
 
 //DELETE
-handleDelete = (Recipe) => {
-  fetch(`https://recipesfortotoapi.herokuapp.com/recipes/${Recipe.id}`, {
-     method: 'DELETE',
-     headers: {
-       'Accept': 'application/json, text/plain, */*',
-       'Content-Type': 'application/json'
-     }
-   })
- .then(json => {
-   const recipe = this.state.recipe.filter(recipes => recipes.id !== Recipe.id)
-   this.setState({recipe})
- })
- .catch(error => console.log(error))
-}
+// handleDelete = (Recipe) => {
+//   fetch(`https://recipesfortotoapi.herokuapp.com/recipes/${Recipe.id}`, {
+//      method: 'DELETE',
+//      headers: {
+//        'Accept': 'application/json, text/plain, */*',
+//        'Content-Type': 'application/json'
+//      }
+//    })
+//  .then(json => {
+//    const recipe = this.state.recipe.filter(recipes => recipes.id !== Recipe.id)
+//    this.setState({recipe})
+//  })
+//  .catch(error => console.log(error))
+// }
 
 //UPDATE likes
 addSupport = (recipe) => {
