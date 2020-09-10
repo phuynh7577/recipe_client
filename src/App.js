@@ -52,21 +52,21 @@ getRecipe = () => {
         .catch(err => console.log(err))
 }
 
-//DELETE
-// handleDelete = (Recipe) => {
-//   fetch(`https://recipesfortotoapi.herokuapp.com/recipes/${Recipe.id}`, {
-//      method: 'DELETE',
-//      headers: {
-//        'Accept': 'application/json, text/plain, */*',
-//        'Content-Type': 'application/json'
-//      }
-//    })
-//  .then(json => {
-//    const recipe = this.state.recipe.filter(recipes => recipes.id !== Recipe.id)
-//    this.setState({recipe})
-//  })
-//  .catch(error => console.log(error))
-// }
+DELETE
+handleDelete = (Recipe) => {
+  fetch(`https://recipesfortotoapi.herokuapp.com/recipes/${Recipe.id}`, {
+     method: 'DELETE',
+     headers: {
+       'Accept': 'application/json, text/plain, */*',
+       'Content-Type': 'application/json'
+     }
+   })
+ .then(json => {
+   const recipe = this.state.recipe.filter(recipes => recipes.id !== Recipe.id)
+   this.setState({recipe})
+ })
+ .catch(error => console.log(error))
+}
 
 //UPDATE likes
 addSupport = (recipe) => {
